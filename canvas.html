@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+	<style>
+		canvas {border: 1px solid silver;} 
+		body {margin: 0; position: relative;}
+		#zone {border: 1px solid red; position: absolute; top:0; left: 0;}
+		#infoPanel {width: 100px; height: 170px; border: 1px solid black; border-radius: 5px; position: absolute; right: 10px; top: 10px; color: white; background-color: silver}
+		#instrPanel {width: 100px; height: 170px; border: 1px solid black; border-radius: 5px; position: absolute; right: 10px; top: 190px; color: white; background-color: silver}
+	</style>
+</head>
+<body>
+	<canvas width="700" height="600" id="canv"></canvas>
+	<div id="zone"></div>
+	<div id="infoPanel">It will be the info panel</div>
+	<div id="instrPanel">It will be the instrument panel</div>
+	<script src="funcs.js"></script>
+
+	<script>
+		var canvas = document.getElementById('canv');
+		var ctx = canvas.getContext('2d');
+
+		var gridX = 50;
+		var gridY = 50;
+		fullScreenCanvas(canvas);
+		drawGrid(canvas, ctx, 10, 10, 'silver');
+		drawGrid(canvas, ctx, gridX, gridY, '#BFB9B9');
+
+		document.body.onclick = function (e) {
+			switchZone(e, 'zone');
+		}
+
+		document.body.ondblclick = function (e) {
+			switchZoneDb(e, 'zone');
+		}
+	</script>
+</body>
+</html>
